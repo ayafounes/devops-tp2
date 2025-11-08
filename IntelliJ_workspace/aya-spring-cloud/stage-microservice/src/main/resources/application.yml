@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: "prod"
+  config:
+    import: "optional:configserver:http://localhost:9999/"
+  application:
+    name: stage-microservice
+  datasource:
+    url: 'jdbc:h2:mem:depdb'
+    h2:
+      console:
+        enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+  eureka:
+    client:
+      service-url:
+        defaultZone: 'http://localhost:8761/eureka/'
+
+server:
+  port: 8150
+  address: 0.0.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+build:
+  version: 1.0
+
+author:
+  name: "Aya Founes [event]"
+  email: "founes[event]aya19@gmail.com"
